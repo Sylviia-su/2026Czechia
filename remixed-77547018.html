@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>捷克 8 天情侶行程</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7F3EE;--warm:#EDE6DB;--gold:#B8965A;--gold-light:#D4B483;
+  --rust:#9B4E2E;--forest:#2D4A3E;--forest-light:#3D6354;
+  --ink:#1C1A18;--muted:#7A6F65;--border:#DDD5C8;
+  --prag:#185FA5;--nature:#2D6A4F;--ck:#9B4E2E;--transit:#2D7D6B;
+  --uni:#5B3A8C;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;}
+
+/* NAV */
+.nav-tabs{display:flex;background:var(--forest);border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:100;}
+.nav-tab{flex:1;padding:13px 6px;text-align:center;font-size:11px;font-weight:500;letter-spacing:0.05em;color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.2s;border-bottom:2px solid transparent;margin-bottom:-2px;}
+.nav-tab:hover{color:rgba(255,255,255,0.8);}
+.nav-tab.active{color:var(--gold-light);border-bottom-color:var(--gold-light);}
+
+.page-section{display:none;}
+.page-section.active{display:block;}
+
+/* HERO */
+.hero{background:var(--forest);color:white;padding:44px 40px 36px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(184,150,90,0.12);}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.05;letter-spacing:-0.5px;}
+.hero-title em{font-style:italic;color:var(--gold-light);}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-top:14px;}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;}
+.htag{font-size:11px;padding:3px 11px;border-radius:20px;border:0.5px solid rgba(184,150,90,0.4);color:var(--gold-light);}
+
+/* LEGEND */
+.legend{display:flex;gap:12px;flex-wrap:wrap;padding:12px 40px;background:var(--warm);border-bottom:1px solid var(--border);}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* CONTENT */
+.content{padding:0 40px 60px;max-width:1100px;margin:0 auto;}
+
+/* SECTION HEADER */
+.sec-hdr{display:flex;align-items:center;gap:14px;margin:28px 0 10px;}
+.sec-hdr-line{flex:1;height:1px;background:var(--border);}
+.sec-hdr-txt{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--muted);letter-spacing:0.05em;white-space:nowrap;}
+
+/* DAY CARD */
+.day-card{margin:10px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:white;transition:box-shadow 0.2s;}
+.day-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);}
+.day-head{display:flex;align-items:stretch;cursor:pointer;user-select:none;}
+.day-stripe{width:4px;flex-shrink:0;}
+.day-head-inner{display:flex;align-items:center;gap:14px;padding:13px 18px;flex:1;}
+.day-num-box{background:var(--warm);border-radius:8px;padding:5px 10px;text-align:center;flex-shrink:0;}
+.dnt{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.dnb{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;line-height:1;}
+.dtw{flex:1;}
+.dcy{font-size:14px;font-weight:500;}
+.dtg{font-size:12px;color:var(--muted);margin-top:2px;}
+.dchv{font-size:14px;color:var(--muted);transition:transform 0.2s;align-self:center;}
+.dchv.open{transform:rotate(180deg);}
+.day-body{display:none;border-top:1px solid var(--border);}
+.day-body.open{display:block;}
+
+/* TWO-COL */
+.day-layout{display:grid;grid-template-columns:1fr 340px;gap:0;}
+.day-left{padding:16px 20px 20px;border-right:1px solid var(--border);}
+.day-right{background:#F9F9F7;}
+.map-label{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:10px 14px 6px;background:#F9F9F7;border-bottom:1px solid var(--border);}
+.map-container{height:100%;min-height:260px;}
+.map-container iframe{width:100%;height:100%;min-height:260px;border:none;display:block;}
+
+/* ITEMS */
+.sl{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--warm);}
+.sl:first-child{margin-top:0;}
+.item{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border);align-items:flex-start;}
+.item:last-child{border-bottom:none;}
+.ii{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;}
+.ib{flex:1;}
+.in{font-size:13px;font-weight:500;color:var(--ink);}
+.io{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.55;}
+.il{display:inline-flex;align-items:center;gap:3px;font-size:11px;color:var(--prag);text-decoration:none;margin-top:3px;}
+.il:hover{text-decoration:underline;}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;margin-left:5px;vertical-align:middle;}
+.bn{background:#EEF2FF;color:#3730A3;} .bu{background:#ECFDF5;color:#065F46;} .bo{background:#FEF9EE;color:#92400E;}
+.buni{background:#F3E8FF;color:#5B3A8C;}
+.ic-bl{background:#EFF6FF;color:#185FA5;} .ic-gd{background:#FEFCE8;color:#92400E;}
+.ic-gn{background:#ECFDF5;color:#065F46;} .ic-rs{background:#FEF2F2;color:#9B4E2E;}
+.ic-pu{background:#F5F3FF;color:#5B21B6;} .ic-gy{background:var(--warm);color:var(--muted);}
+.ic-beer{background:#FEF3C7;color:#92400E;}
+.tip{margin-top:12px;padding:9px 13px;border-radius:8px;font-size:12px;line-height:1.7;}
+.tg{background:#F0FDF4;border-left:3px solid var(--forest-light);color:#064E3B;}
+.ta{background:#FFFBEB;border-left:3px solid var(--gold);color:#78350F;}
+.tb{background:#EFF6FF;border-left:3px solid var(--prag);color:#1E3A5F;}
+.tuni{background:#F3E8FF;border-left:3px solid var(--uni);color:#3B1F6E;}
+.s-bl{background:var(--prag);} .s-gn{background:var(--nature);}
+.s-ck{background:var(--ck);} .s-tr{background:var(--transit);} .s-gy{background:var(--muted);}
+.s-uni{background:var(--uni);}
+
+/* ===== CHECKLIST ===== */
+.inner-page{padding:32px 40px 60px;max-width:960px;margin:0 auto;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--forest);margin-bottom:4px;}
+.page-sub{font-size:13px;color:var(--muted);margin-bottom:24px;}
+.cl-wrap{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.cl-table{width:100%;border-collapse:collapse;font-size:13px;}
+.cl-table th{background:var(--forest);color:rgba(255,255,255,0.8);padding:10px 12px;text-align:left;font-size:11px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;white-space:nowrap;}
+.cl-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.cl-table tr:last-child td{border-bottom:none;}
+.cl-table tr:hover td{background:#FDFAF6;}
+.cl-done td{opacity:0.45;}
+.cl-done .cl-task-txt{text-decoration:line-through;}
+.cl-check{width:16px;height:16px;cursor:pointer;accent-color:var(--forest);}
+.cl-input{border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:12px;font-family:'DM Sans',sans-serif;background:var(--cream);width:100%;outline:none;color:var(--ink);}
+.cl-input:focus{border-color:var(--gold);background:white;}
+.cl-cost-input{border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:12px;font-family:'DM Sans',sans-serif;background:var(--cream);width:100%;outline:none;color:var(--ink);text-align:right;}
+.cl-cost-input:focus{border-color:var(--gold);background:white;}
+.cl-add-row{display:flex;gap:8px;padding:12px 14px;background:var(--warm);border-top:1px solid var(--border);flex-wrap:wrap;}
+.cl-add-row input{border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:12px;font-family:'DM Sans',sans-serif;background:white;outline:none;}
+.cl-add-row input:focus{border-color:var(--gold);}
+.add-task-input{flex:2;min-width:140px;}
+.add-owner-input{flex:1;min-width:90px;}
+.add-date-input{flex:1;min-width:110px;}
+.add-cost-input{flex:1;min-width:90px;text-align:right;}
+.cl-btn{padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;font-weight:500;white-space:nowrap;}
+.cl-btn-add{background:var(--forest);color:white;}
+.cl-btn-del{background:#FEF2F2;color:var(--rust);border:1px solid #FECACA;padding:5px 10px;}
+.cl-status{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;}
+.st-todo{background:#FEF3C7;color:#92400E;} .st-done{background:#D1FAE5;color:#065F46;} .st-prog{background:#DBEAFE;color:#1E40AF;}
+.cl-summary{display:flex;gap:20px;padding:12px 16px;background:var(--warm);border-top:1px solid var(--border);font-size:12px;color:var(--muted);flex-wrap:wrap;}
+.cl-summary strong{color:var(--ink);}
+
+/* ===== BOOKING ===== */
+.bk-cards{display:flex;flex-direction:column;gap:14px;}
+.bk-card{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.bk-card-head{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);}
+.bk-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.bk-name{font-size:14px;font-weight:500;}
+.bk-loc{font-size:12px;color:var(--muted);margin-top:2px;}
+.bk-body{padding:14px 18px;}
+.bk-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.bk-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.bk-tag{font-size:11px;padding:2px 9px;border-radius:20px;background:var(--warm);color:var(--muted);border:0.5px solid var(--border);}
+.bk-link-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:var(--forest);color:white;text-decoration:none;font-size:12px;font-weight:500;margin-bottom:14px;}
+.bk-link-btn:hover{background:var(--forest-light);}
+.bk-proof{border-top:1px solid var(--border);padding-top:12px;}
+.bk-proof-title{font-size:11px;font-weight:500;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;}
+.bk-proof-row{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;}
+.bk-upload-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border:1.5px dashed var(--border);border-radius:8px;background:var(--cream);color:var(--muted);font-size:12px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.bk-upload-btn:hover{border-color:var(--gold);color:var(--gold);}
+.bk-note{flex:1;min-width:160px;border:1px solid var(--border);border-radius:8px;padding:7px 11px;font-size:12px;font-family:'DM Sans',sans-serif;resize:none;outline:none;min-height:56px;background:var(--cream);}
+.bk-note:focus{border-color:var(--gold);background:white;}
+.bk-save{padding:7px 13px;border-radius:8px;border:none;background:var(--gold);color:white;font-size:12px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;white-space:nowrap;}
+.bk-save:hover{background:var(--rust);}
+.bk-proof-display{margin-top:8px;}
+.bk-proof-img{max-width:180px;border-radius:8px;border:1px solid var(--border);margin-right:6px;margin-top:4px;}
+.bk-proof-text{font-size:12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:6px;padding:7px 11px;color:#064E3B;margin-top:4px;display:inline-block;}
+.bk-del-btn{padding:5px 10px;border-radius:6px;border:1px solid #FECACA;background:#FEF2F2;color:var(--rust);font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif;}
+
+/* ADD BOOKING FORM */
+.bk-add-form{background:white;border:1.5px dashed var(--border);border-radius:12px;padding:18px 20px;}
+.bk-add-title{font-size:13px;font-weight:500;color:var(--forest);margin-bottom:12px;}
+.bk-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.bk-form-full{grid-column:1/-1;}
+.bk-form-input{border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--cream);outline:none;width:100%;}
+.bk-form-input:focus{border-color:var(--gold);background:white;}
+.bk-form-label{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;display:block;}
+.bk-form-btn{padding:8px 18px;border-radius:8px;border:none;background:var(--forest);color:white;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;}
+.bk-form-btn:hover{background:var(--forest-light);}
+
+/* ===== APPS ===== */
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.app-card{background:white;border:1px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;}
+.app-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.app-cat{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.app-name{font-size:14px;font-weight:500;margin-bottom:5px;}
+.app-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+.app-tags{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap;}
+.apt{font-size:10px;padding:2px 7px;border-radius:20px;}
+.apt-free{background:#ECFDF5;color:#065F46;}
+.apt-os{background:var(--warm);color:var(--muted);}
+
+/* FOOTER */
+.footer{background:var(--forest);color:rgba(255,255,255,0.4);text-align:center;padding:22px;font-size:12px;}
+.footer span{color:var(--gold-light);}
+
+@media(max-width:700px){
+  .day-layout{grid-template-columns:1fr;}
+  .day-right{border-top:1px solid var(--border);}
+  .map-container{min-height:200px;}
+  .map-container iframe{min-height:200px;}
+  .hero{padding:32px 20px 28px;}
+  .hero-title{font-size:36px;}
+  .content,.inner-page{padding-left:20px;padding-right:20px;}
+  .legend{padding:10px 20px;}
+  .app-grid{grid-template-columns:1fr;}
+  .bk-form-grid{grid-template-columns:1fr;}
+  .cl-table th:nth-child(4),.cl-table td:nth-child(4){display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showPage('itinerary',this)">📅 行程表</div>
+  <div class="nav-tab" onclick="showPage('checklist',this)">✅ 出發清單</div>
+  <div class="nav-tab" onclick="showPage('booking',this)">📋 預約管理</div>
+  <div class="nav-tab" onclick="showPage('apps',this)">📱 推薦 APP</div>
+</div>
+
+<!-- ==================== 行程表 ==================== -->
+<div id="page-itinerary" class="page-section active">
+<div class="hero">
+  <div class="hero-eyebrow">✈ 情侶旅遊企劃</div>
+  <div class="hero-title">捷克 <em>8</em> 天<br>完整行程表</div>
+  <div class="hero-sub">布拉格・波希米亞瑞士・庫倫洛夫 CK 小鎮</div>
+  <div class="hero-tags">
+    <span class="htag">布拉格 4 天</span>
+    <span class="htag">CK 小鎮 2 晚</span>
+    <span class="htag">波希米亞瑞士國家公園</span>
+    <span class="htag">查理大學 1348</span>
+    <span class="htag">輕鬆情侶風格</span>
+  </div>
+</div>
+<div class="legend">
+  <div class="leg-item"><div class="leg-dot" style="background:var(--prag)"></div>布拉格</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--nature)"></div>波希米亞瑞士</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--transit)"></div>移動日</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--ck)"></div>CK 小鎮</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--uni)"></div>大學校區</div>
+  <div class="leg-item" style="margin-left:auto"><span class="badge bn">新增</span>優化景點 &nbsp;<span class="badge buni">大學</span>校園</div>
+</div>
+<div class="content">
+
+<!-- Day 1 -->
+<div class="sec-hdr"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">布拉格 Prague · Day 1–3</div><div class="sec-hdr-line"></div></div>
+<div class="day-card">
+  <div class="day-head" onclick="tog(this)">
+    <div class="day-stripe s-bl"></div>
+    <div class="day-head-inner">
+      <div class="day-num-box"><div class="dnt">Day</div><div class="dnb">1</div></div>
+      <div class="dtw"><div class="dcy" style="color:var(--prag)">台灣出發・布拉格抵達</div><div class="dtg">星宇長程飛行・入住・調時差</div></div>
+      <div class="dchv">▾</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="day-layout">
+      <div class="day-left">
+        <div class="sl">移動</div>
+        <div class="item"><div class="ii ic-bl">✈</div><div class="ib"><div class="in">星宇長程飛行</div><div class="io">台北→布拉格約 13–14 小時，帶頸枕、眼罩</div></div></div>
+        <div class="item"><div class="ii ic-bl">🏨</div><div class="ib"><div class="in">抵達・入住</div><div class="io">推薦 Malá Strana 小城區（最浪漫）或 Old Town（最方便）</div></div></div>
+        <div class="sl">晚上</div>
+        <div class="item"><div class="ii ic-gy">🌙</div><div class="ib"><div class="in">伏爾塔瓦河河岸散步</div><div class="io">調時差首選，撐到當地晚上 10 點再睡</div></div></div>
+      </div>
+      <div class="day-right">
+        <div class="map-label">📍 今日區域：小城區</div>
+        <div class="map-container"><iframe src="https://maps.google.com/maps?q=Mala+Strana+Prague&output=embed&z=14" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 2 -->
+<div class="day-card">
+  <div class="day-head" onclick="tog(this)">
+    <div class="day-stripe s-bl"></div>
+    <div class="day-head-inner">
+      <div class="day-num-box"><div class="dnt">Day</div><div class="dnb">2</div></div>
+      <div class="dtw"><div class="dcy" style="color:var(--prag)">布拉格 — 老城區 + 查理大學</div><div class="dtg">歷史精華・校園巡禮・約 1.5 萬步</div></div>
+      <div class="dchv">▾</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="day-layout">
+      <div class="day-left">
+        <div class="sl">上午</div>
+        <div class="item"><div class="ii ic-bl">🏛</div><div class="ib"><div class="in">Old Town Square 老城廣場</div><div class="io">布拉格最熱鬧廣場，哥德式建築環繞</div></div></div>
+        <div class="item"><div class="ii ic-gd">🕰</div><div class="ib"><div class="in">天文鐘 Astronomical Clock</div><div class="io">整點機械人偶表演，建議 10 或 11 點去</div></div></div>
+        <div class="item"><div class="ii ic-uni">🎓</div><div class="ib"><div class="in">查理大學 Carolinum 主樓 <span class="badge buni">大學</span></div><div class="io">中東歐最古老大學（1348 年創立），哥德式拱窗為地標。就在天文鐘旁步行 3 分鐘，平日 10:00–18:00 對外開放，附設小展覽廳。卡夫卡、愛因斯坦都曾在此就讀或任教</div><a class="il" href="https://maps.google.com/?q=Carolinum+Charles+University+Prague" target="_blank">📍 地圖</a></div></div>
+        <div class="item"><div class="ii ic-bl">🌉</div><div class="ib"><div class="in">Charles Bridge 查理大橋</div><div class="io">兩側各 15 座巴洛克雕像，順走到小城區</div></div></div>
+        <div class="sl">下午</div>
+        <div class="item"><div class="ii ic-bl">🗼</div><div class="ib"><div class="in">火藥塔 Powder Tower</div><div class="io">可登高俯瞰老城，票價約 NT$220</div></div></div>
+        <div class="item"><div class="ii ic-uni">🎓</div><div class="ib"><div class="in">查理大學法學院 Faculty of Law <span class="badge buni">大學</span></div><div class="io">河岸邊優美的新古典主義建築，外牆有二戰地下抵抗運動紀念牌匾。不開放進入，但外觀和河景值得停留拍照</div><a class="il" href="https://maps.google.com/?q=Charles+University+Faculty+of+Law+Prague" target="_blank">📍 地圖</a></div></div>
+        <div class="item"><div class="ii ic-pu">☕</div><div class="ib"><div class="in">Vinohrady 文青咖啡區 <span class="badge bn">新增</span></div><div class="io">布拉格最有質感的在地咖啡街區，無觀光客，情侶午後首選</div></div></div>
+        <div class="sl">晚上</div>
+        <div class="item"><div class="ii ic-gy">🌙</div><div class="ib"><div class="in">查理大橋夜景</div><div class="io">夜間人少，燈光打在雕像上極迷人</div></div></div>
+        <div class="tip tuni">🎓 查理大學小知識：1348 年由神聖羅馬皇帝查理四世創立，比牛津晚兩個世紀但比哈佛早近 300 年。Franz Kafka、Max Brod、Albert Einstein 都與這所大學有淵源。</div>
+      </div>
+      <div class="day-right">
+        <div class="map-label">📍 今日路線：老城區 + 大學</div>
+        <div class="map-container"><iframe src="https://maps.google.com/maps?q=Carolinum+Charles+University+Prague&output=embed&z=15" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 3 -->
+<div class="day-card">
+  <div class="day-head" onclick="tog(this)">
+    <div class="day-stripe s-bl"></div>
+    <div class="day-head-inner">
+      <div class="day-num-box"><div class="dnt">Day</div><div class="dnb">3</div></div>
+      <div class="dtw"><div class="dcy" style="color:var(--prag)">布拉格 — 城堡區</div><div class="dtg">建議 8:30 前進城・Strahov 圖書館・啤酒溫泉・遊船晚餐</div></div>
+      <div class="dchv">▾</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="day-layout">
+      <div class="day-left">
+        <div class="sl">上午（早起值得）</div>
+        <div class="item"><div class="ii ic-bl">🏰</div><div class="ib"><div class="in">Prague Castle 布拉格城堡</div><div class="io">買 B 票，8:30 前入內人極少，晨光最美</div></div></div>
+        <div class="item"><div class="ii ic-bl">⛪</div><div class="ib"><div class="in">St. Vitus Cathedral 聖維特大教堂</div><div class="io">哥德式彩繪玻璃在早晨逆光下最美</div></div></div>
+        <div class="item"><div class="ii ic-gd">🏘</div><div class="ib"><div class="in">黃金巷 Golden Lane</div><div class="io">卡夫卡居住過的 22 號彩色小屋</div></div></div>
+        <div class="item"><div class="ii ic-pu">📚</div><div class="ib"><div class="in">Strahov 修道院圖書館 <span class="badge bn">新增</span></div><div class="io">布拉格最美祕境，巴洛克書架疊到天花板，步行 10 分可達，門票約 NT$450</div></div></div>
+        <div class="item"><div class="ii ic-uni">🎓</div><div class="ib"><div class="in">查理大學小城區學院 <span class="badge buni">大學</span></div><div class="io">位於 Malostranské náměstí 25，查理大橋旁廣場邊的巴洛克學院建築，被列入國家文化遺產，外觀極美</div><a class="il" href="https://maps.google.com/?q=Charles+University+Malostranske+namesti+Prague" target="_blank">📍 地圖</a></div></div>
+        <div class="sl">下午</div>
+        <div class="item"><div class="ii ic-bl">🏡</div><div class="ib"><div class="in">小城區 Malá Strana 漫步</div><div class="io">城堡腳下最有氛圍的區域，巷弄裡藏著質感咖啡館</div></div></div>
+        <div class="item"><div class="ii ic-beer">🍺</div><div class="ib"><div class="in">Beer Spa Bernard 啤酒溫泉 <span class="badge bn">新增</span></div><div class="io">泡在啤酒花浴缸裡，無限暢飲生啤酒，30 分鐘泡澡＋30 分鐘加熱床，可加購 20 分鐘按摩。城堡腿走完後泡剛好，皮膚變超軟還送一瓶紀念啤酒，約 1–1.5 小時，NT$1,800–2,500/人</div><a class="il" href="https://maps.google.com/?q=Beer+Spa+Bernard+Prague+Majestic+Plaza" target="_blank">📍 地圖（Majestic Plaza 飯店內）</a></div></div>
+        <div class="sl">晚上</div>
+        <div class="item"><div class="ii ic-gd">⛵</div><div class="ib"><div class="in">遊船晚餐</div><div class="io">邊用餐邊欣賞查理大橋和城堡夜景，建議提前訂位。泡完啤酒溫泉後搭船，全天最完美的收尾</div></div></div>
+      </div>
+      <div class="day-right">
+        <div class="map-label">📍 今日路線：城堡區</div>
+        <div class="map-container"><iframe src="https://maps.google.com/maps?q=Prague+Castle&output=embed&z=15" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 4 -->
+<div class="sec-hdr"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">波希米亞瑞士國家公園 · Day 4</div><div class="sec-hdr-line"></div></div>
+<div class="day-card">
+  <div class="day-head" onclick="tog(this)">
+    <div class="day-stripe s-gn"></div>
+    <div class="day-head-inner">
+      <div class="day-num-box"><div class="dnt">Day</div><div class="dnb">4</div></div>
+      <div class="dtw"><div class="dcy" style="color:var(--nature)">波希米亞瑞士國家公園 <span class="badge bu">已更新</span></div><div class="dtg">砂岩峽谷・天然石拱・峽谷船遊・可跨境德國</div></div>
+      <div class="dchv">▾</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="day-layout">
+      <div class="day-left">
+        <div class="sl">出發方式（擇一）</div>
+        <div class="item"><div class="ii ic-gn">👥</div><div class="ib"><div class="in">跟團一日遊（最推薦）</div><div class="io">含接送、導覽，約 NT$1,500–2,500/人，Viator 或 GetYourGuide 訂，評價極高</div><a class="il" href="https://www.viator.com/Prague/d462-ttd" target="_blank">🔗 Viator 搜尋</a></div></div>
+        <div class="item"><div class="ii ic-gy">🚂</div><div class="ib"><div class="in">自助：火車到 Děčín 再轉</div><div class="io">約 1.5h，較省錢但需自行研究路線</div></div></div>
+        <div class="sl">必去體驗</div>
+        <div class="item"><div class="ii ic-gn">🪨</div><div class="ib"><div class="in">Pravčická brána 天然砂岩拱門</div><div class="io">歐洲最大天然砂岩拱，高 26 公尺</div></div></div>
+        <div class="item"><div class="ii ic-gn">🚣</div><div class="ib"><div class="in">Kamenice 峽谷船遊</div><div class="io">小船穿越砂岩峽谷，公園內最浪漫的體驗</div></div></div>
+        <div class="item"><div class="ii ic-gn">🥾</div><div class="ib"><div class="in">岩石迷宮步道</div><div class="io">強度低至中等，運動鞋即可</div></div></div>
+        <div class="item"><div class="ii ic-gy">🌉</div><div class="ib"><div class="in">德國 Bastei Bridge <span class="badge bo">可選</span></div><div class="io">跨境德國砂岩橋，記得帶護照</div></div></div>
+        <div class="tip tg">💡 穿運動鞋・帶水・備雨衣。早上 8 點出發，下午 6–7 點回布拉格</div>
+      </div>
+      <div class="day-right">
+        <div class="map-label">📍 今日地點</div>
+        <div class="map-container"><iframe src="https://maps.google.com/maps?q=Pravčická+brána+Czech+Republic&output=embed&z=12" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 5 -->
+<div class="sec-hdr"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">移動日・CK 小鎮 · Day 5–6</div><div class="sec-hdr-line"></div></div>
+<div class="day-card">
+  <div class="day-head" onclick="tog(this)">
+    <div class="day-stripe s-tr"></div>
+    <div class="day-head-inner">
+      <div class="day-num-box"><div class="dnt">Day</div><div class="dnb">5</div></div>
+      <div class="dtw"><div class="dcy" style="color:var(--transit)">布拉格 → Hluboká → CK 小鎮</div><div class="dtg">移動日・順路停童話城堡</div></div>
+      <div class="dchv">▾</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="day-layout">
+      <div class="day-left">
+        <div class="sl">中午順路停留</div>
+        <div class="item"><div class="ii ic-gd">🏰</div><div class="ib"><div class="in">Hluboká Castle 赫盧博卡城堡 <span class="badge bn">新增</span></div><div class="io">仿英國溫莎城堡，外觀庭院免費，室內導覽約 NT$550，往 CK 途中零繞路</div></div></div>
+        <div class="sl">下午抵達 + 晚上</div>
+        <div class="item"><div class="ii ic-rs">🏡</div><div class="ib"><div class="in">入住 CK 老城內</div><div class="io">推薦：Hotel Ruze、Pension Na louzi</div></div></div>
+        <div class="item"><div class="ii ic-rs">🌙</div><div class="ib"><div class="in">觀光客散去後夜遊</div><div class="io">城堡燈光倒映河面，CK 最夢幻的時刻</div></div></div>
+        <div class="tip ta">🚗 布拉格到 CK 約 2 小時，加上 Hluboká 全程約 4 小時。建議租車或訂 Shuttle</div>
+      </div>
+      <div class="day-right">
+        <div class="map-label">📍 今日路線</div>
+        <div class="map-container"><iframe src="https://maps.google.com/maps?q=Hluboká+Castle+Czech+Republic&output=embed&z=10" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 6 -->
+<div class="day-card">
+  <div class="day-head" onclick="tog(this)">
+    <div class="day-stripe s-ck"></div>
+    <div class="day-head-inner">
+      <div class="day-num-box"><div class="dnt">Day</div><div class="dnb">6</div></div>
+      <div class="dtw"><div class="dcy" style="color:var(--ck)">CK 小鎮 全天</div><div class="dtg">城堡・古裝拍照・泛舟・啤酒廠</div></div>
+      <div class="dchv">▾</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="day-layout">
+      <div class="day-left">
+        <div class="sl">早晨</div>
+        <div class="item"><div class="ii ic-rs">🌅</div><div class="ib"><div class="in">晨間漫步小鎮</div><div class="io">7–8 點無遊客，石板路加晨霧最美</div></div></div>
+        <div class="sl">上午</div>
+        <div class="item"><div class="ii ic-rs">🏰</div><div class="ib"><div class="in">城堡 + 塔樓</div><div class="io">塔樓俯瞰彩色屋頂，CK 最經典畫面</div></div></div>
+        <div class="item"><div class="ii ic-pu">📸</div><div class="ib"><div class="in">Seidel 攝影博物館・古裝拍照 <span class="badge bn">新增</span></div><div class="io">穿 19 世紀古裝拍復古肖像，CK 最適合情侶的隱藏體驗，強烈建議提前預約</div></div></div>
+        <div class="sl">下午</div>
+        <div class="item"><div class="ii ic-rs">🛶</div><div class="ib"><div class="in">伏爾塔瓦河泛舟</div><div class="io">從河面仰望城堡，約 1–2 小時</div></div></div>
+        <div class="item"><div class="ii ic-gd">🍺</div><div class="ib"><div class="in">Český Krumlov Brewery 在地啤酒廠</div><div class="io">13 世紀老啤酒廠，參觀並品酒</div></div></div>
+        <div class="sl">晚上</div>
+        <div class="item"><div class="ii ic-rs">🍽</div><div class="ib"><div class="in">河岸餐廳晚餐</div><div class="io">烤豬腳配當地黑啤，這趟最值得的一頓飯</div></div></div>
+      </div>
+      <div class="day-right">
+        <div class="map-label">📍 CK 小鎮地圖</div>
+        <div class="map-container"><iframe src="https://maps.google.com/maps?q=Český+Krumlov+historic+center&output=embed&z=15" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 7 -->
+<div class="sec-hdr"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">回程・布拉格收尾 · Day 7–8</div><div class="sec-hdr-line"></div></div>
+<div class="day-card">
+  <div class="day-head" onclick="tog(this)">
+    <div class="day-stripe s-tr"></div>
+    <div class="day-head-inner">
+      <div class="day-num-box"><div class="dnt">Day</div><div class="dnb">7</div></div>
+      <div class="dtw"><div class="dcy" style="color:var(--transit)">CK → (Holašovice) → 布拉格</div><div class="dtg">回程・可選停 UNESCO 小村・購物收尾</div></div>
+      <div class="dchv">▾</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="day-layout">
+      <div class="day-left">
+        <div class="sl">早上</div>
+        <div class="item"><div class="ii ic-rs">☀</div><div class="ib"><div class="in">CK 晨間最後巡禮</div><div class="io">退房前喝杯咖啡，看晨光打在城堡上</div></div></div>
+        <div class="sl">回程途中（可選）</div>
+        <div class="item"><div class="ii ic-gy">🏘</div><div class="ib"><div class="in">Holašovice UNESCO 小村 <span class="badge bo">可選</span></div><div class="io">僅 20 分繞路，免費，18–19 世紀農村巴洛克建築群</div></div></div>
+        <div class="sl">下午回布拉格</div>
+        <div class="item"><div class="ii ic-bl">🛍</div><div class="ib"><div class="in">Palladium 商場 + Pařížská 精品街</div></div></div>
+        <div class="item"><div class="ii ic-gd">🛒</div><div class="ib"><div class="in">超市掃伴手禮</div><div class="io">菠丹妮・小鼴鼠・捷克水晶・Pilsner 啤酒杯</div></div></div>
+        <div class="sl">晚上</div>
+        <div class="item"><div class="ii ic-gd">🍽</div><div class="ib"><div class="in">U Fleků 捷克晚餐收尾</div><div class="io">1499 年創立，布拉格最老啤酒館，烤豬腳＋黑啤完美收尾</div></div></div>
+      </div>
+      <div class="day-right">
+        <div class="map-label">📍 回程路線</div>
+        <div class="map-container"><iframe src="https://maps.google.com/maps?q=Palladium+Shopping+Prague&output=embed&z=14" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 8 -->
+<div class="day-card">
+  <div class="day-head" onclick="tog(this)">
+    <div class="day-stripe s-gy"></div>
+    <div class="day-head-inner">
+      <div class="day-num-box"><div class="dnt">Day</div><div class="dnb">8</div></div>
+      <div class="dtw"><div class="dcy">回台灣</div><div class="dtg">布拉格機場・返程</div></div>
+      <div class="dchv">▾</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="day-layout">
+      <div class="day-left">
+        <div class="item"><div class="ii ic-bl">✈</div><div class="ib"><div class="in">瓦茨拉夫・哈維爾機場</div><div class="io">建議提前 3 小時抵達，計程車或接駁約 30–40 分從市區</div></div></div>
+        <div class="tip tg" style="margin-top:14px">🎒 帶著砂岩峽谷的驚嘆、CK 石板路的浪漫、查理大學的歷史感、還有一箱裝不下的伴手禮回家！</div>
+      </div>
+      <div class="day-right">
+        <div class="map-label">📍 布拉格機場</div>
+        <div class="map-container"><iframe src="https://maps.google.com/maps?q=Václav+Havel+Airport+Prague&output=embed&z=13" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /content -->
+</div><!-- /itinerary -->
+
+<!-- ==================== 出發清單 ==================== -->
+<div id="page-checklist" class="page-section">
+<div class="inner-page">
+  <div class="page-title">出發前必辦清單</div>
+  <div class="page-sub">點選完成・填寫負責人・完成日期・預估費用</div>
+  <div class="cl-wrap">
+    <table class="cl-table">
+      <thead>
+        <tr>
+          <th style="width:32px">✓</th>
+          <th>事項</th>
+          <th style="width:100px">負責人</th>
+          <th style="width:120px">完成日期</th>
+          <th style="width:110px">預估費用</th>
+          <th style="width:80px">狀態</th>
+          <th style="width:44px"></th>
+        </tr>
+      </thead>
+      <tbody id="clBody"></tbody>
+    </table>
+    <div id="clSummary" class="cl-summary"></div>
+    <div class="cl-add-row">
+      <input class="add-task-input" type="text" id="newTask" placeholder="新增待辦事項..."/>
+      <input class="add-owner-input" type="text" id="newOwner" placeholder="負責人"/>
+      <input class="add-date-input" type="date" id="newDate"/>
+      <input class="add-cost-input" type="text" id="newCost" placeholder="費用 (NT$)"/>
+      <button class="cl-btn cl-btn-add" onclick="addTask()">＋ 新增</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 預約管理 ==================== -->
+<div id="page-booking" class="page-section">
+<div class="inner-page">
+  <div class="page-title">預約管理</div>
+  <div class="page-sub">需要提前預約的景點・可上傳截圖或輸入訂位代碼・可自行新增</div>
+  <div class="bk-cards" id="bkCards"></div>
+  <div style="margin-top:20px;">
+    <div class="bk-add-form" id="bkAddForm">
+      <div class="bk-add-title">＋ 新增預約項目</div>
+      <div class="bk-form-grid">
+        <div>
+          <label class="bk-form-label">景點名稱 *</label>
+          <input class="bk-form-input" id="bkName" placeholder="例：布拉格城堡導覽"/>
+        </div>
+        <div>
+          <label class="bk-form-label">地點 / 行程天數</label>
+          <input class="bk-form-input" id="bkLoc" placeholder="例：布拉格・Day 3"/>
+        </div>
+        <div>
+          <label class="bk-form-label">圖示 Emoji</label>
+          <input class="bk-form-input" id="bkIcon" placeholder="例：🏰" maxlength="4"/>
+        </div>
+        <div>
+          <label class="bk-form-label">預約連結（可選）</label>
+          <input class="bk-form-input" id="bkLink" placeholder="https://..."/>
+        </div>
+        <div class="bk-form-full">
+          <label class="bk-form-label">簡短說明</label>
+          <input class="bk-form-input" id="bkDesc" placeholder="例：需提前一個月預約，名額有限"/>
+        </div>
+      </div>
+      <button class="bk-form-btn" onclick="addBooking()">新增預約項目</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 推薦 APP ==================== -->
+<div id="page-apps" class="page-section">
+<div class="inner-page">
+  <div class="page-title">推薦 APP 清單</div>
+  <div class="page-sub">出發前下載，讓旅途更順暢</div>
+  <div class="app-grid">
+    <div class="app-card"><div class="app-icon" style="background:#E8F4FD">🗺</div><div><div class="app-cat">地圖導航</div><div class="app-name">Google Maps</div><div class="app-desc">最重要的 APP。出發前務必下載捷克離線地圖，沒有網路也能導航。可建立「我的地圖」收藏所有景點並共享給男友。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#FEF3C7">🚌</div><div><div class="app-cat">捷克巴士訂票</div><div class="app-name">RegioJet</div><div class="app-desc">捷克最主要的長途巴士系統，布拉格↔CK 小鎮的主要交通。可在 APP 上訂票、查時刻表，票直接在手機出示。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#ECFDF5">🚇</div><div><div class="app-cat">布拉格大眾運輸</div><div class="app-name">PID Lítačka</div><div class="app-desc">布拉格官方交通票務 APP，直接在手機購買地鐵・電車票，不用找售票機。支援 24h / 72h 通票。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#FEE2E2">💰</div><div><div class="app-cat">旅遊分帳</div><div class="app-name">Splitwise</div><div class="app-desc">情侶旅遊分帳神器。記錄誰付了什麼，自動計算誰欠誰多少，支援捷克克朗（CZK）幣種，回台後一次結清。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#F3E8FF">💱</div><div><div class="app-cat">匯率換算</div><div class="app-name">XE Currency</div><div class="app-desc">即時匯率查詢，支援離線使用。捷克克朗（CZK）和台幣快速換算，在超市或市場買東西時很好用。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#FEF9EE">🌤</div><div><div class="app-cat">天氣預報</div><div class="app-name">Weather.com</div><div class="app-desc">波希米亞瑞士當天天氣直接影響行程，出發前一晚必看。下雨可考慮調換行程順序。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#ECFDF5">🔤</div><div><div class="app-cat">語言翻譯</div><div class="app-name">Google Translate</div><div class="app-desc">拍照翻譯功能超好用，對著捷克文菜單拍一下即可翻譯。出發前下載捷克語離線包，沒網路也能用相機翻譯。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#FEE2E2">🎟</div><div><div class="app-cat">景點訂票</div><div class="app-name">GetYourGuide</div><div class="app-desc">波希米亞瑞士一日遊、遊船晚餐都可以在這裡訂。評價透明，可免費取消，是旅行體驗訂票最推薦的平台。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#F0FDF4">🏨</div><div><div class="app-cat">住宿訂房</div><div class="app-name">Booking.com</div><div class="app-desc">CK 老城內住宿要提早訂。用 Booking.com 篩選「老城中心」位置，看評論選有河景或城堡景的房間。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">iOS</span><span class="apt apt-os">Android</span></div></div></div>
+    <div class="app-card"><div class="app-icon" style="background:#F3E8FF">🎓</div><div><div class="app-cat">大學資訊</div><div class="app-name">Charles University 官網</div><div class="app-desc">查理大學 Carolinum 開放時間和活動可在官網查詢。如果剛好有開放日（Open Door Day）可以進入大廳參觀，平日 10:00–18:00 對外開放。</div><div class="app-tags"><span class="apt apt-free">免費</span><span class="apt apt-os">網站</span></div></div></div>
+  </div>
+</div>
+</div>
+
+<div class="footer">捷克 8 天情侶行程 &nbsp;·&nbsp; <span>布拉格 · 查理大學 · 波希米亞瑞士 · CK 小鎮</span></div>
+
+<script>
+// ===== PAGE SWITCH =====
+function showPage(id,tab){
+  document.querySelectorAll('.page-section').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  tab.classList.add('active');
+}
+
+// ===== DAY TOGGLE =====
+function tog(h){
+  const b=h.nextElementSibling,c=h.querySelector('.dchv');
+  const o=b.classList.contains('open');
+  b.classList.toggle('open',!o);c.classList.toggle('open',!o);
+}
+
+// ===== CHECKLIST =====
+const defaultTasks=[
+  {task:'機票訂位（星宇）',owner:'',date:'',cost:'',done:false},
+  {task:'CK 老城內住宿預訂',owner:'',date:'',cost:'',done:false},
+  {task:'波希米亞瑞士一日遊訂位',owner:'',date:'',cost:'NT$3,000–5,000',done:false},
+  {task:'Seidel 古裝拍照預約',owner:'',date:'',cost:'',done:false},
+  {task:'Beer Spa Bernard 啤酒溫泉預約',owner:'',date:'',cost:'NT$1,800–2,500/人',done:false},
+  {task:'遊船晚餐訂位（布拉格）',owner:'',date:'',cost:'NT$1,500–2,500/人',done:false},
+  {task:'RegioJet / Shuttle 交通預訂',owner:'',date:'',cost:'',done:false},
+  {task:'歐洲旅遊保險',owner:'',date:'',cost:'',done:false},
+  {task:'CZK 換匯',owner:'',date:'',cost:'',done:false},
+  {task:'下載 Google Maps 捷克離線地圖',owner:'',date:'',cost:'免費',done:false},
+  {task:'查理大學 Carolinum 開放時間確認',owner:'',date:'',cost:'免費',done:false},
+];
+
+function loadTasks(){try{const s=localStorage.getItem('czTasks3');return s?JSON.parse(s):defaultTasks;}catch(e){return defaultTasks;}}
+function saveTasks(t){try{localStorage.setItem('czTasks3',JSON.stringify(t));}catch(e){}}
+
+function renderTasks(){
+  const tasks=loadTasks();
+  const tbody=document.getElementById('clBody');
+  tbody.innerHTML='';
+  let totalCost=0,doneCost=0,doneCount=0;
+  tasks.forEach((t,i)=>{
+    const tr=document.createElement('tr');
+    if(t.done)tr.classList.add('cl-done');
+    const status=t.done?'<span class="cl-status st-done">完成</span>':
+      (t.owner||t.date?'<span class="cl-status st-prog">進行中</span>':'<span class="cl-status st-todo">待辦</span>');
+    tr.innerHTML=`
+      <td><input type="checkbox" class="cl-check" ${t.done?'checked':''} onchange="toggleTask(${i})"/></td>
+      <td><span class="cl-task-txt">${t.task}</span></td>
+      <td><input class="cl-input" type="text" value="${t.owner}" placeholder="誰負責" onblur="updateF(${i},'owner',this.value)"/></td>
+      <td><input class="cl-input" type="date" value="${t.date}" onblur="updateF(${i},'date',this.value)"/></td>
+      <td><input class="cl-cost-input" type="text" value="${t.cost}" placeholder="NT$..." onblur="updateF(${i},'cost',this.value)"/></td>
+      <td>${status}</td>
+      <td><button class="cl-btn cl-btn-del" onclick="deleteTask(${i})">✕</button></td>
+    `;
+    tbody.appendChild(tr);
+    if(t.done)doneCount++;
+  });
+  // summary
+  const summary=document.getElementById('clSummary');
+  const pct=tasks.length?Math.round(doneCount/tasks.length*100):0;
+  summary.innerHTML=`<span>共 <strong>${tasks.length}</strong> 項</span><span>已完成 <strong>${doneCount}</strong> 項</span><span>完成率 <strong>${pct}%</strong></span>`;
+}
+
+function toggleTask(i){const t=loadTasks();t[i].done=!t[i].done;saveTasks(t);renderTasks();}
+function updateF(i,f,v){const t=loadTasks();t[i][f]=v;saveTasks(t);renderTasks();}
+function deleteTask(i){if(!confirm('確定刪除這個項目？'))return;const t=loadTasks();t.splice(i,1);saveTasks(t);renderTasks();}
+function addTask(){
+  const task=document.getElementById('newTask').value.trim();
+  if(!task)return;
+  const owner=document.getElementById('newOwner').value.trim();
+  const date=document.getElementById('newDate').value;
+  const cost=document.getElementById('newCost').value.trim();
+  const t=loadTasks();t.push({task,owner,date,cost,done:false});saveTasks(t);
+  ['newTask','newOwner','newCost'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('newDate').value='';
+  renderTasks();
+}
+renderTasks();
+
+// ===== BOOKING =====
+const defaultBookings=[
+  {id:'beerspa',icon:'🍺',color:'#FEF3C7',name:'Beer Spa Bernard 啤酒溫泉',loc:'布拉格・Day 3 下午',
+   desc:'泡在啤酒花浴缸裡無限暢飲生啤酒，私人包廂兩人共用，30 分鐘泡澡＋30 分鐘加熱床，可加購 20 分鐘按摩。約 NT$1,800–2,500/人，結束送紀念啤酒一瓶，評分 4.8/5（644 則）',
+   tags:['布拉格','Day 3 下午','需提前預約','情侶必去','含無限啤酒'],link:'https://www.getyourguide.com/prague-l10/prague-beer-bath-with-unlimited-beer-t230002/',linkText:'GetYourGuide 訂位'},
+  {id:'seidel',icon:'📸',color:'#F5F3FF',name:'Seidel 攝影博物館・古裝拍照',loc:'CK 小鎮・Day 6',
+   desc:'19 世紀古董攝影館，穿古裝拍復古肖像照，CK 最適合情侶的隱藏體驗，名額有限',
+   tags:['CK 小鎮','Day 6 上午','需提前預約','情侶必去'],link:'https://www.seidel.cz',linkText:'前往官網預約'},
+  {id:'cruise',icon:'⛵',color:'#EFF6FF',name:'布拉格遊船晚餐',loc:'布拉格・Day 3',
+   desc:'伏爾塔瓦河遊船晚餐，邊用餐邊欣賞查理大橋和城堡夜景，旺季座位有限',
+   tags:['布拉格','Day 3 晚上','需提前預約','浪漫首選'],link:'https://www.getyourguide.com/prague-l26/prague-dinner-cruise-tc176/',linkText:'GetYourGuide 訂位'},
+  {id:'bohemian',icon:'🪨',color:'#ECFDF5',name:'波希米亞瑞士一日遊團',loc:'布拉格出發・Day 4',
+   desc:'含接送、導覽，約 NT$1,500–2,500/人，部分行程含跨境德國 Bastei Bridge',
+   tags:['布拉格出發','Day 4 全天','需提前預約','含接送'],link:'https://www.viator.com/Prague/d462-ttd',linkText:'Viator 搜尋訂位'},
+  {id:'castle',icon:'🏰',color:'#FEFCE8',name:'布拉格城堡 B 票',loc:'布拉格・Day 3',
+   desc:'含聖維特大教堂，建議官網購票免排隊。早上 8:30 前入場人少且光線最美',
+   tags:['布拉格','Day 3 上午','建議網路購票'],link:'https://www.hrad.cz/en/prague-castle-for-visitors/admission',linkText:'城堡官網購票'},
+  {id:'carolinum',icon:'🎓',color:'#F3E8FF',name:'查理大學 Carolinum 參觀',loc:'布拉格・Day 2',
+   desc:'平日 10:00–18:00 對外開放，附設展覽廳免費參觀。若有 Open Door Day 可進入大廳',
+   tags:['布拉格','Day 2','免費入場','大學校區'],link:'https://cuni.cz/UKEN-194.html',linkText:'查理大學官網'},
+];
+
+function loadBookings(){try{const s=localStorage.getItem('czBookings3');return s?JSON.parse(s):defaultBookings;}catch(e){return defaultBookings;}}
+function saveBookings(b){try{localStorage.setItem('czBookings3',JSON.stringify(b));}catch(e){}}
+function loadProofs(){try{return JSON.parse(localStorage.getItem('czProofs3')||'{}');}catch(e){return {};}}
+function saveProof(id,data){const p=loadProofs();p[id]=data;try{localStorage.setItem('czProofs3',JSON.stringify(p));}catch(e){}}
+
+function renderBookings(){
+  const bookings=loadBookings(),proofs=loadProofs();
+  const container=document.getElementById('bkCards');
+  container.innerHTML='';
+  bookings.forEach((b,idx)=>{
+    const proof=proofs[b.id]||{};
+    const hasDone=proof.text||proof.imgSrc;
+    const tagsHtml=b.tags?b.tags.map(t=>`<span class="bk-tag">${t}</span>`).join(''):'';
+    const linkHtml=b.link?`<a class="bk-link-btn" href="${b.link}" target="_blank">🔗 ${b.linkText||'前往預約'}</a>`:'';
+    const card=document.createElement('div');
+    card.className='bk-card';
+    card.innerHTML=`
+      <div class="bk-card-head">
+        <div class="bk-icon" style="background:${b.color||'#F5F5F5'}">${b.icon||'📌'}</div>
+        <div style="flex:1"><div class="bk-name">${b.name}</div><div class="bk-loc">📍 ${b.loc||''}</div></div>
+        <div style="display:flex;gap:6px;align-items:center">
+          ${hasDone?'<span class="cl-status st-done">已完成</span>':'<span class="cl-status st-todo">尚未預約</span>'}
+          <button class="bk-del-btn" onclick="deleteBooking(${idx})">刪除</button>
+        </div>
+      </div>
+      <div class="bk-body">
+        ${b.desc?`<div class="bk-desc">${b.desc}</div>`:''}
+        ${tagsHtml?`<div class="bk-meta">${tagsHtml}</div>`:''}
+        ${linkHtml}
+        <div class="bk-proof">
+          <div class="bk-proof-title">📎 預約完成後上傳截圖或輸入確認碼</div>
+          <div class="bk-proof-row">
+            <label class="bk-upload-btn">📷 上傳截圖<input type="file" accept="image/*" style="display:none" onchange="handleImg('${b.id}',this)"/></label>
+            <textarea class="bk-note" id="note-${b.id}" placeholder="輸入訂位代碼或備注...">${proof.text||''}</textarea>
+            <button class="bk-save" onclick="saveNote('${b.id}')">儲存</button>
+          </div>
+          <div class="bk-proof-display" id="display-${b.id}">
+            ${proof.imgSrc?`<img class="bk-proof-img" src="${proof.imgSrc}"/>`:''}
+            ${proof.text?`<div class="bk-proof-text">📝 ${proof.text}</div>`:''}
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function deleteBooking(idx){
+  if(!confirm('確定刪除這個預約項目？'))return;
+  const b=loadBookings();b.splice(idx,1);saveBookings(b);renderBookings();
+}
+
+function addBooking(){
+  const name=document.getElementById('bkName').value.trim();
+  if(!name){alert('請輸入景點名稱');return;}
+  const loc=document.getElementById('bkLoc').value.trim();
+  const icon=document.getElementById('bkIcon').value.trim()||'📌';
+  const link=document.getElementById('bkLink').value.trim();
+  const desc=document.getElementById('bkDesc').value.trim();
+  const id='custom_'+Date.now();
+  const b=loadBookings();
+  b.push({id,icon,color:'#F5F5F0',name,loc,desc,tags:[],link,linkText:'前往預約'});
+  saveBookings(b);
+  ['bkName','bkLoc','bkIcon','bkLink','bkDesc'].forEach(i=>document.getElementById(i).value='');
+  renderBookings();
+}
+
+function handleImg(id,input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{const p=loadProofs()[id]||{};p.imgSrc=e.target.result;saveProof(id,p);renderBookings();};
+  reader.readAsDataURL(file);
+}
+
+function saveNote(id){
+  const text=document.getElementById('note-'+id).value.trim();
+  const p=loadProofs()[id]||{};p.text=text;saveProof(id,p);renderBookings();
+}
+
+renderBookings();
+</script>
+</body>
+</html>
